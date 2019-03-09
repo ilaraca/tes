@@ -16,7 +16,7 @@ const passport      = require('passport');
 require('./configs/passport.js');
 
 mongoose
-  .connect('mongodb://localhost/api', {useNewUrlParser: true})
+  .connect('mongodb://localhost/api-tes', {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -70,7 +70,7 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 app.use(cors({
   credentials: true,
-  origin: ['http://localhost:3000']
+  origin: ['http://localhost:8080']
 }));
 
 
@@ -79,5 +79,7 @@ const index = require('./routes/index');
 app.use('/', index);
 
 app.use('/auth', require('./routes/auth'));
+
+app.use('/settings', require('./routes/settings'));
 
 module.exports = app;

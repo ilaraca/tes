@@ -13,10 +13,10 @@ const User = require('../models/User.js');
 
 
 authRoutes.post('/signup', (req, res, next) => {
-  const { username, password, campus, course, image } = req.body;
+  const { username, password, email } = req.body;
 
-  if (!username || !password) {
-    res.status(400).json({ message: 'Provide username and password' });
+  if (!username || !password || !email) {
+    res.status(400).json({ message: 'Provide username, password, email' });
     return;
   }
 
@@ -32,6 +32,7 @@ authRoutes.post('/signup', (req, res, next) => {
     }
 
     if (foundUser) {
+      console.log('signup');
       res.status(400).json({ message: 'Username taken. Choose another one.' });
       return;
     }
@@ -42,9 +43,7 @@ authRoutes.post('/signup', (req, res, next) => {
     const aNewUser = new User({
       username,
       password: hashPass,
-      campus,
-      course,
-      image
+      email
     });
 
     aNewUser.save((err) => {
