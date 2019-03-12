@@ -39,6 +39,7 @@ class App extends Component {
     return (
       <div>
         <NavBar userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
+        {/* <Carrousel /> */}
         <Switch>
           <Route exact path="/signup" render={() => <Signup getUser={this.getTheUser} />} />
           <Route exact path="/login" render={() => <Login getUser={this.getTheUser} />} />
