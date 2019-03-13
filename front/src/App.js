@@ -5,10 +5,9 @@ import Header from './components/Layout/Header';
 import Footer from './components/Layout/Footer';
 import Index from './components/Layout/Index';
 import { muscles, exercises } from './components/store';
-import Content from './components/Layout/content';
+import Cards from './components/Layout/Cards';
+import Content from './components/Layout/Content';
 import './css/style.css';
-import { Typography } from '@material-ui/core';
-
 
 class App extends Component {
   constructor(props) {
@@ -86,13 +85,11 @@ class App extends Component {
     
     return <Fragment>
       <CssBaseline/>
-        <Header 
-        muscles={muscles}
-        onExerciseCreate={this.handleExerciseCreate}
-        />
-        <Content>
+        <Header />
+        <Content/> 
+        <Cards />
 
-        </Content>
+        
         <Index
           exercise={exercise}
           category={category}

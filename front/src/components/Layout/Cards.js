@@ -1,31 +1,19 @@
 import React, { Fragment } from 'react';
-//import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Card, CardContent, Grid, Typography  } from '@material-ui/core';
 
 const styles = {
 
-  root: {
-    display: 'flex',
-    
-},
   card: {
     minWidth: 275,
-    
-    //flexWrap: 'wrap',  
   },
-//   bullet: {
-//     display: 'flex',
-//     flexWrap: 'wrap',
-//     margin: '0 2px',
-//     transform: 'scale(0.8)',
-//   },
+
   title: {
     fontSize: 14,
   },
   pos: {
     marginBottom: 12,
-  },
+  }
 };
 
 function SimpleCard(props) {
@@ -33,24 +21,8 @@ function SimpleCard(props) {
 
   return (
       <Fragment>
-      
-    <Card className={classes.card}>
-      <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography>
-        <Typography component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-    </Card>
-    
-    <Grid container className={classes.root}>
+      <Grid container>
+      <Grid item sm>
     <Card className={classes.card}>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -67,8 +39,25 @@ function SimpleCard(props) {
       </CardContent>
     </Card>
     </Grid>
-    <Grid container>
+    <Grid item sm>
     <Card className={classes.card}>
+      <CardContent>
+        <Typography className={classes.title} color="textSecondary" gutterBottom>
+          Word of the Day bla
+        </Typography>
+        <Typography className={classes.pos} color="textSecondary">
+          adjective
+        </Typography>
+        <Typography component="p">
+          well meaning and kindly.
+          <br />
+          {'"a benevolent smile"'}
+        </Typography>
+      </CardContent>
+    </Card>
+    </Grid>
+    <Grid item sm>
+    <Card>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           Word of the Day
@@ -83,13 +72,10 @@ function SimpleCard(props) {
         </Typography>
       </CardContent>
     </Card>
+    </Grid>
     </Grid>
 </Fragment>
   );
 }
-
-// SimpleCard.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
 
 export default withStyles(styles)(SimpleCard);
