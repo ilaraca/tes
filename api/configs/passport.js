@@ -1,5 +1,5 @@
 const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs'); // !!!
 const passport = require('passport');
 const User = require('../models/User.js');
 
@@ -17,7 +17,7 @@ passport.deserializeUser((userIdFromSession, cb) => {
   });
 });
 
-passport.use(new LocalStrategy((username, password, email, next) => {
+passport.use(new LocalStrategy((username, password, next) => {
   User.findOne({ username }, (err, foundUser) => {
     if (err) {
       next(err);
@@ -31,11 +31,6 @@ passport.use(new LocalStrategy((username, password, email, next) => {
 
     if (!bcrypt.compareSync(password, foundUser.password)) {
       next(null, false, { message: 'Incorrect password.' });
-      return;
-    }
-
-    if (!email) {
-      next(null, false, { message: 'Incorrect email.' });
       return;
     }
 
