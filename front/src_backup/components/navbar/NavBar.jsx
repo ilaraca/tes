@@ -16,14 +16,14 @@ class Navbar extends Component {
     this.setState({ ...this.state, loggedInUser: nextProps.userInSession });
   }
 
-  logoutUser = () =>{
+  logoutUser() {
     this.service.logout()
-    .then(() => {
-      this.setState({ loggedInUser: null });
-      this.props.getUser(null);  
-    })
+      .then(() => {
+        this.setState({ loggedInUser: null });
+        this.props.getUser(null);
+      });
   }
-  
+
   render() {
     if (this.state.loggedInUser) {
       return (

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import uniqueId from 'react-html-id';
 
 class Settings extends Component {

@@ -24,6 +24,13 @@ class App extends Component {
       exercise: {}
     };
     this.service = new AuthService();
+    this.getTheUser = this.getTheUser.bind(this);
+  }
+
+  getTheUser(userObj) {
+    this.setState({
+      loggedInUser: userObj
+    });
   }
 
   fetchUser() {
@@ -35,17 +42,12 @@ class App extends Component {
           });
         })
         .catch((_err) => {
+          console.log(_err);
           this.setState({
             loggedInUser: false
           });
         });
     }
-  }
-
-  getTheUser = (userObj) => {
-    this.setState({
-      loggedInUser: userObj
-    });
   }
 
   render() {
