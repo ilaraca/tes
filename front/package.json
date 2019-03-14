@@ -1,10 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "front01",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-=======
   "name": "front",
   "version": "1.0.0",
   "description": "",
@@ -35,31 +29,16 @@
     "node-sass": "^4.11.0",
     "postcss-loader": "^3.0.0",
     "precss": "^4.0.0",
->>>>>>> develop
     "react": "^16.8.4",
     "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.8.4",
-<<<<<<< HEAD
-    "react-scripts": "2.1.5"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-=======
     "react-final-form": "^4.1.0",
     "react-html-id": "^0.1.5",
     "react-native": "^0.58.6",
     "react-responsive-carousel": "^3.1.47",
     "react-router-dom": "^4.3.1",
     "sass-loader": "^7.1.0",
-    "semantic-ui": "^2.4.2",
     "style-loader": "^0.23.1"
->>>>>>> develop
   },
   "browserslist": [
     ">0.2%",
