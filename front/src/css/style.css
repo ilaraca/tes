@@ -1,0 +1,12 @@
+.h1 {
+    color: red;
+}
+
+.card-settings {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-top: 20px; /* Added */
+}
+.btn-margin-right{
+  margin-right: 20px !important;
+}
