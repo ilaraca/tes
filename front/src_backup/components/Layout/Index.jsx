@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core';
 import { Delete, Edit } from '@material-ui/icons'; 
 import { withStyles } from '@material-ui/core/styles';
-import Form from '../Form'
+import Form from '../Form.jsx'
 
 const style = theme => ({
   Paper: {

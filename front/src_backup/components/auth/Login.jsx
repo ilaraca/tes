@@ -13,6 +13,7 @@ class Login extends Component {
 
   handleFormSubmit(event) {
     event.preventDefault();
+    console.log('lalalalalalal');
     const username = this.state.username;
     const password = this.state.password;
     this.service.login(username, password)

@@ -1,8 +1,8 @@
 import React from 'react';
 // import axios from 'axios';
 import { AppBar, Tab, Toolbar, Typography } from '@material-ui/core';
-import Login from '../Auth/Login';
-import Signup from '../Auth/Signup';
+import Login from '../auth/Login.jsx';
+import Signup from '../auth/Signup.jsx';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {

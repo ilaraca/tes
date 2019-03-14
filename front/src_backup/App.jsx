@@ -1,4 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Header from './components/Layout/Header.jsx';
+import Footer from './components/Layout/Footer.jsx';
+import Index from './components/Layout/Index.jsx';
+import { muscles, exercises } from './components/store.jsx';
+import Content from './components/Layout/content.jsx';
+import './css/style.css';
+
+//o que eu fiz
 import { Switch, Route, Link } from 'react-router-dom';
 import Login from './components/auth/Login.jsx';
 import Signup from './components/auth/Signup.jsx';
@@ -9,7 +18,11 @@ import AuthService from './components/auth/auth-service.jsx';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { loggedInUser: null };
+    this.state = { 
+      loggedInUser: null, 
+      exercises,
+      exercise: {}
+    };
     this.service = new AuthService();
   }
 
@@ -39,7 +52,6 @@ class App extends Component {
     return (
       <div>
         <NavBar userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
-        {/* <Carrousel /> */}
         <Switch>
           <Route exact path="/signup" render={() => <Signup getUser={this.getTheUser} />} />
           <Route exact path="/login" render={() => <Login getUser={this.getTheUser} />} />

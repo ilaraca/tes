@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+// import { Link } from 'react-router-dom';
+import AuthService from './auth-service.jsx';
 import { 
  Button, 
  TextField,
@@ -7,15 +9,18 @@ import {
  DialogContent, 
  DialogContentText, 
  DialogTitle,
- Link 
+ Link
 }
  from '@material-ui/core';
 export default class extends Component {
      constructor(props) {
        super(props);
        this.state = {
+         username: '',
+         password: '',
          open: false,
        };
+       this.service = new AuthService();
      }
 
   handleClickOpen = () => {
@@ -24,6 +29,23 @@ export default class extends Component {
 
   handleClose = () => {
     this.setState({ open: false });
+  };
+
+  handleFormSubmit(event) {
+    event.preventDefault();
+    const username = this.state.username;
+    const password = this.state.password;
+    this.service.login(username, password)
+      .then((response) => {
+        this.setState({ username: '', password: '' });
+        this.props.getUser(response);
+      })
+      .catch(error => console.log(error));
+  }
+
+
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.value });
   };
 
   render() {
@@ -41,7 +63,9 @@ export default class extends Component {
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
+          
         >
+        <form action="/" method="POST" onSubmit={(e) => { e.preventDefault(); alert('Submitted form!'); this.handleClose(); } }>
           <DialogTitle id="form-dialog-title">Login</DialogTitle>
           <DialogContent>
             <DialogContentText>
@@ -54,14 +78,18 @@ export default class extends Component {
               label="Usuário"
               type="email"
               fullWidth
+              value={this.state.name}
+               onChange={this.handleChange('name')}
             />
             <TextField
-              autoFocus
+              // autoFocus
               margin="dense"
-              id="name"
+              id="password"
               label="Senha"
               type="password"
               fullWidth
+              value={this.state.passaword}
+              onChange={this.handleChange('password')}
             />
           </DialogContent>
           <DialogActions>
@@ -72,6 +100,7 @@ export default class extends Component {
               OK
             </Button>
           </DialogActions>
+          </form>
         </Dialog>
       </Fragment>
     );
