@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import withRoot from '../withRoot.jsx';
 import { Switch, Route } from 'react-router-dom';
-import Login from '../Login.jsx'
+import Login from '../Login.jsx';
+import Signup from '../Signup.jsx';
 import Home from '../components/layout/Home.jsx';
 
 const styles = theme => ({
@@ -36,6 +37,7 @@ class Index extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} /> 
           <Route exact path="/login" render={() => <Login />} />
+          <Route exact path="/signup" render={() => <Signup/>}/>
         </Switch>
       </React.Fragment>
     );

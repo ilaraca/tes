@@ -7,13 +7,13 @@ import Typography from '../components/Typography.jsx';
 import ProductHeroLayout from './ProductHeroLayout.jsx';
 
 const backgroundImage =
-  'https://i.embed.ly/1/image?url=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F635988422_1280.jpg&key=4fce0568f2ce49e8b54624ef71a8a5bd';
+  'http://1.bp.blogspot.com/-XzxXrGopq9Y/UqSzqFBT2oI/AAAAAAAADmA/XLZQHpN60tw/s1600/eureques-consumo-colaborativo.jpg';
 
 const styles = theme => ({
   background: {
     backgroundImage: `url(${backgroundImage})`,
     backgroundColor: '#7fc7d9', // Average color of the background image.
-    backgroundPosition: 'center',
+    backgroundPosition: 'center'
   },
   button: {
     minWidth: 200,

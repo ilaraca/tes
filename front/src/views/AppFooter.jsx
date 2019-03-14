@@ -11,7 +11,7 @@ import compose from '../utils/compose.jsx';
 const styles = theme => ({
   root: {
     display: 'flex',
-    backgroundColor: theme.palette.tercentenary.grey,
+    //backgroundColor: theme.palette.grey
   },
   layoutBody: {
     marginTop: theme.spacing.unit * 8,
@@ -30,11 +30,6 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: theme.palette.warning.main,
-    // marginRight: theme.spacing(1),
-    // '&:hover': {
-    //   backgroundColor: theme.palette.warning.dark,
-    // },
   },
   list: {
     margin: 0,
