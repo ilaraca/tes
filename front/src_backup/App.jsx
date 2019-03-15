@@ -19,9 +19,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      loggedInUser: null, 
-      exercises,
-      exercise: {}
+      loggedInUser: null
     };
     this.service = new AuthService();
     this.getTheUser = this.getTheUser.bind(this);

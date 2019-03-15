@@ -112,7 +112,17 @@ function AppAppBar(props) {
             <Link
               color="inherit"
               variant="h6"
-              className={clsx(classes.rightLink, classes.btnHover)}
+              underline="none"
+              className={classes.rightLink}
+              href="/products"
+            >
+              {'Lista de Produtos'}
+            </Link>
+            <Link
+              color="inherit"
+              variant="h6"
+              underline="none"
+              className={classes.rightLink}
               href="/login"
             >
               {'Entre'}
