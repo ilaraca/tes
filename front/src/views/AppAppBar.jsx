@@ -2,12 +2,12 @@ import React from 'react';
 import clsx from 'clsx';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
-import { Link, InputBase } from '@material-ui/core';
+import { Grid, Link, InputBase } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import AppBar from '../components/AppBar.jsx';
 import Toolbar, { styles as toolbarStyles } from '../components/Toolbar.jsx';
 
-const spacing = 3;
+const spacing = 15;
 
 const styles = theme => ({
   title: {
@@ -51,7 +51,7 @@ const styles = theme => ({
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing.unit * 3,
-      width: 'auto'
+      width: 350
     }
   },
   searchIcon: {
@@ -85,9 +85,9 @@ function AppAppBar(props) {
 
   return (
     <div>
-      <AppBar position="fixed">
+      <AppBar position="fixed">   
         <Toolbar className={classes.toolbar}>
-          <div className={classes.left} />
+        <div className={classes.left} />
           <Link
             className={clsx(classes.title, classes.btnHover)}
             variant="h6"
@@ -108,12 +108,12 @@ function AppAppBar(props) {
                 }}
               />
             </div>
-          <div className={classes.right}>
+          <div className={clsx(classes.right, classes.btnHover)}>   
             <Link
               color="inherit"
               variant="h6"
               underline="none"
-              className={classes.rightLink}
+              className={clsx(classes.rightLink, classes.linkSecondary, classes.btnHover)}
               href="/products"
             >
               {'Lista de Produtos'}
@@ -122,7 +122,7 @@ function AppAppBar(props) {
               color="inherit"
               variant="h6"
               underline="none"
-              className={classes.rightLink}
+              className={clsx(classes.rightLink, classes.linkSecondary, classes.btnHover)}
               href="/login"
             >
               {'Entre'}

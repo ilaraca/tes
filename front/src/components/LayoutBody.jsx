@@ -32,8 +32,8 @@ const styles = theme => ({
     [theme.breakpoints.up(850 + theme.spacing.unit * 6)]: {
       width: 850,
       marginLeft: 'auto',
-      marginRight: 'auto',
-    },
+      marginRight: 'auto'
+    }
   },
   widthLarge: {
     width: 'auto',
@@ -48,8 +48,8 @@ const styles = theme => ({
       width: '77.7777%'
     },
     [theme.breakpoints.up(round(1400 / 0.7777))]: {
-      width: 1400,
-    },
+      width: 1400
+    }
   },
   widthXlarge: {
     width: 'auto',
@@ -65,14 +65,14 @@ const styles = theme => ({
     },
     [theme.breakpoints.up(round(1800 / 0.9))]: {
       width: 1800
-    },
+    }
   },
   widthFull: {
     width: '100%'
   },
   fullHeight: {
     height: '100%'
-  },
+  }
 });
 
 function LayoutBody(props) {

@@ -36,7 +36,8 @@ const styles = theme => ({
     fontWeight: theme.typography.fontWeightMedium
   },
   image: {
-    height: 55,
+    height: 250,
+    borderRadius: 50,
     marginTop: theme.spacing.unit * 4,
     marginBottom: theme.spacing.unit * 4
   },
@@ -72,12 +73,12 @@ function ProductHowItWorks(props) {
               <div className={classes.item}>
                 <div className={classes.number}>1.</div>
                 <img
-                  src="/static/themes/onepirate/productHowItWorks1.svg"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjZM-Evqd1nyd8GIQenKwq5xLOhGrwQ8gZnRfkTmm7iswU89Kegg"
                   alt="suitcase"
                   className={classes.image}
                 />
                 <Typography variant="h5" align="center">
-                  Appointment every Wednesday 9am.
+                  Cadastre-se e colabore para um mundo menos capitalista.
                 </Typography>
               </div>
             </Grid>
@@ -85,12 +86,12 @@ function ProductHowItWorks(props) {
               <div className={classes.item}>
                 <div className={classes.number}>2.</div>
                 <img
-                  src="/static/themes/onepirate/productHowItWorks2.svg"
+                  src="/public/img/pessoas.png"
                   alt="graph"
                   className={classes.image}
                 />
                 <Typography variant="h5" align="center">
-                  First come, first served. Our offers are in limited quantities, so be quick.
+                  Cadastre seus produtos, estimule a volta do escambo! 
                 </Typography>
               </div>
             </Grid>
@@ -98,13 +99,12 @@ function ProductHowItWorks(props) {
               <div className={classes.item}>
                 <div className={classes.number}>3.</div>
                 <img
-                  src="/static/themes/onepirate/productHowItWorks3.svg"
+                  src="/public/img/troca.png"
                   alt="clock"
                   className={classes.image}
                 />
                 <Typography variant="h5" align="center">
-                  {'New offers every week. New experiences, new surprises. '}
-                  {'Your Sundays will no longer be alike.'}
+                Troque por outros, faça um mundo mais colaborativo!
                 </Typography>
               </div>
             </Grid>

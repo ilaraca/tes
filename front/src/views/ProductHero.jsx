@@ -10,9 +10,12 @@ const backgroundImage =
 
 const styles = theme => ({
   background: {
+    widthSmall: '100%',
+    fullHeight: '100%',
     backgroundImage: `url(${backgroundImage})`,
     backgroundColor: '#7fc7d9', // Average color of the background image.
-    backgroundPosition: 'center'
+    backgroundPosition: 'center',
+    backgroundSize: 'cover', 
   },
   button: {
     minWidth: 200
@@ -22,11 +25,11 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 4,
     [theme.breakpoints.up('sm')]: {
       marginTop: theme.spacing.unit * 10
-    },
+    }
   },
   more: {
     marginTop: theme.spacing.unit * 2,
-  },
+  }
 });
 
 function ProductHero(props) {
@@ -45,7 +48,7 @@ function ProductHero(props) {
       <Button
         color="secondary"
         variant="contained"
-        size="small"
+        size="medium"
         className={classes.button}
         component={linkProps => (
           <Link {...linkProps} href="/signup" variant="button" />
