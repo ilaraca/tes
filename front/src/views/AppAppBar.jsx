@@ -1,15 +1,19 @@
+<<<<<<< HEAD
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+=======
+import React from 'react';
+>>>>>>> 815ac5fec76119421d4de9115a9b937a395b0539
 import clsx from 'clsx';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
-import { Link, InputBase } from '@material-ui/core';
+import { Grid, Link, InputBase } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import AppBar from '../components/AppBar.jsx';
 import Toolbar, { styles as toolbarStyles } from '../components/Toolbar.jsx';
 import AuthService from '../components/services/auth-service.jsx';
 
-const spacing = 3;
+const spacing = 15;
 
 const styles = theme => ({
   title: {
@@ -53,7 +57,7 @@ const styles = theme => ({
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing.unit * 3,
-      width: 'auto'
+      width: 350
     }
   },
   searchIcon: {
@@ -224,9 +228,5 @@ class AppAppBar extends Component {
     }
   }
 }
-
-AppAppBar.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(AppAppBar);

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import grey from '@material-ui/core/colors/grey';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 // import Link from '@material-ui/core/Link';
@@ -11,30 +12,31 @@ import compose from '../utils/compose.jsx';
 const styles = theme => ({
   root: {
     display: 'flex',
-    //backgroundColor: theme.palette.grey
+    color: grey
   },
   layoutBody: {
-    marginTop: theme.spacing.unit * 8,
-    marginBottom: theme.spacing.unit * 8,
-    display: 'flex'
+    marginTop: theme.spacing.unit * 4,
+    marginBottom: theme.spacing.unit * 2,
+    display: 'flex',
+    textAlign: 'center'
   },
   iconsWrapper: {
-    height: 120,
+    height: 120
   },
   icons: {
-    display: 'flex',
+    display: 'flex'
   },
   icon: {
     width: 48,
     height: 48,
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   list: {
     margin: 0,
     listStyle: 'none',
-    paddingLeft: 0,
+    paddingLeft: 0
   },
   listItem: {
     paddingTop: theme.spacing.unit * 0.5,
@@ -43,7 +45,7 @@ const styles = theme => ({
   language: {
     marginTop: theme.spacing.unit * 1,
     width: 150
-  },
+  }
 });
 
 function AppFooter(props) {

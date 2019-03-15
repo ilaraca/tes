@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { capitalize } from '@material-ui/core/utils/helpers';
 import MuiTypography from '@material-ui/core/Typography';
@@ -57,13 +56,6 @@ function Typography(props) {
     </MuiTypography>
   );
 }
-
-Typography.propTypes = {
-  children: PropTypes.node,
-  classes: PropTypes.object.isRequired,
-  marked: PropTypes.oneOf([false, 'center', 'left']),
-  variant: PropTypes.string,
-};
 
 Typography.defaultProps = {
   marked: false,

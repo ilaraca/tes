@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, Form, FormSpy } from 'react-final-form';
-import grey from '@material-ui/core/colors/grey';
 import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import withRoot from '../../withRoot.jsx';

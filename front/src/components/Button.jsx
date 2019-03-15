@@ -4,7 +4,7 @@ import MuiButton from '@material-ui/core/Button';
 
 const styles = theme => ({
   root: {
-    borderRadius: 0,
+    borderRadius: 50,
     fontWeight: theme.typography.fontWeightMedium,
     fontFamily: theme.typography.fontFamilySecondary,
     padding: `${(theme.spacing.unit * 2) - 1}px ${theme.spacing.unit * 4}px`,

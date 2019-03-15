@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
@@ -10,8 +9,8 @@ import Typography from '../components/Typography.jsx';
 const styles = theme => ({
   root: {
     display: 'flex',
-    backgroundColor: theme.palette.secondary.light,
-    overflow: 'hidden',
+    backgroundColor: theme.palette.primary.light,
+    overflow: 'hidden'
   },
   layoutBody: {
     marginTop: theme.spacing.unit * 10,
@@ -37,7 +36,8 @@ const styles = theme => ({
     fontWeight: theme.typography.fontWeightMedium
   },
   image: {
-    height: 55,
+    height: 250,
+    borderRadius: 50,
     marginTop: theme.spacing.unit * 4,
     marginBottom: theme.spacing.unit * 4
   },
@@ -48,7 +48,8 @@ const styles = theme => ({
     opacity: 0.7
   },
   button: {
-    marginTop: theme.spacing.unit * 8
+    marginTop: theme.spacing.unit * 8,
+    backgroundColor: theme.palette.secondary.dark
   },
 });
 
@@ -72,12 +73,12 @@ function ProductHowItWorks(props) {
               <div className={classes.item}>
                 <div className={classes.number}>1.</div>
                 <img
-                  src="/static/themes/onepirate/productHowItWorks1.svg"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjZM-Evqd1nyd8GIQenKwq5xLOhGrwQ8gZnRfkTmm7iswU89Kegg"
                   alt="suitcase"
                   className={classes.image}
                 />
                 <Typography variant="h5" align="center">
-                  Appointment every Wednesday 9am.
+                  Cadastre-se e colabore para um mundo menos capitalista.
                 </Typography>
               </div>
             </Grid>
@@ -85,12 +86,12 @@ function ProductHowItWorks(props) {
               <div className={classes.item}>
                 <div className={classes.number}>2.</div>
                 <img
-                  src="/static/themes/onepirate/productHowItWorks2.svg"
+                  src="/public/img/pessoas.png"
                   alt="graph"
                   className={classes.image}
                 />
                 <Typography variant="h5" align="center">
-                  First come, first served. Our offers are in limited quantities, so be quick.
+                  Cadastre seus produtos, estimule a volta do escambo! 
                 </Typography>
               </div>
             </Grid>
@@ -98,20 +99,18 @@ function ProductHowItWorks(props) {
               <div className={classes.item}>
                 <div className={classes.number}>3.</div>
                 <img
-                  src="/static/themes/onepirate/productHowItWorks3.svg"
+                  src="/public/img/troca.png"
                   alt="clock"
                   className={classes.image}
                 />
                 <Typography variant="h5" align="center">
-                  {'New offers every week. New experiences, new surprises. '}
-                  {'Your Sundays will no longer be alike.'}
+                Troque por outros, faça um mundo mais colaborativo!
                 </Typography>
               </div>
             </Grid>
           </Grid>
         </div>
         <Button
-          color="secondary"
           size="large"
           variant="contained"
           className={classes.button}
@@ -125,9 +124,5 @@ function ProductHowItWorks(props) {
     </section>
   );
 }
-
-ProductHowItWorks.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(ProductHowItWorks);
