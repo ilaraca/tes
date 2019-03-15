@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
@@ -10,8 +9,8 @@ import Typography from '../components/Typography.jsx';
 const styles = theme => ({
   root: {
     display: 'flex',
-    backgroundColor: theme.palette.secondary.light,
-    overflow: 'hidden',
+    backgroundColor: theme.palette.primary.light,
+    overflow: 'hidden'
   },
   layoutBody: {
     marginTop: theme.spacing.unit * 10,
@@ -48,7 +47,8 @@ const styles = theme => ({
     opacity: 0.7
   },
   button: {
-    marginTop: theme.spacing.unit * 8
+    marginTop: theme.spacing.unit * 8,
+    backgroundColor: theme.palette.secondary.dark
   },
 });
 
@@ -111,7 +111,6 @@ function ProductHowItWorks(props) {
           </Grid>
         </div>
         <Button
-          color="secondary"
           size="large"
           variant="contained"
           className={classes.button}
@@ -125,9 +124,5 @@ function ProductHowItWorks(props) {
     </section>
   );
 }
-
-ProductHowItWorks.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(ProductHowItWorks);

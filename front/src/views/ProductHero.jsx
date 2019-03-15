@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import Button from '../components/Button.jsx';
@@ -7,7 +6,7 @@ import Typography from '../components/Typography.jsx';
 import ProductHeroLayout from './ProductHeroLayout.jsx';
 
 const backgroundImage =
-  'http://1.bp.blogspot.com/-XzxXrGopq9Y/UqSzqFBT2oI/AAAAAAAADmA/XLZQHpN60tw/s1600/eureques-consumo-colaborativo.jpg';
+  'https://burst.shopifycdn.com/photos/business-women-handshake_925x.progressive.jpg';
 
 const styles = theme => ({
   background: {
@@ -16,7 +15,7 @@ const styles = theme => ({
     backgroundPosition: 'center'
   },
   button: {
-    minWidth: 200,
+    minWidth: 200
   },
   h5: {
     marginBottom: theme.spacing.unit * 4,
@@ -46,7 +45,7 @@ function ProductHero(props) {
       <Button
         color="secondary"
         variant="contained"
-        size="large"
+        size="small"
         className={classes.button}
         component={linkProps => (
           <Link {...linkProps} href="/signup" variant="button" />
@@ -60,9 +59,5 @@ function ProductHero(props) {
     </ProductHeroLayout>
   );
 }
-
-ProductHero.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(ProductHero);

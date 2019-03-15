@@ -69,7 +69,7 @@ const theme = {
     h2: {
       ...rawTheme.typography.h2,
       ...fontHeader,
-      fontSize: 48,
+      fontSize: 30,
     },
     h3: {
       ...rawTheme.typography.h3,

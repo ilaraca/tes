@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
@@ -96,8 +95,8 @@ function AppAppBar(props) {
             href="/"
           >
             {'T & S - Things e Services'}
-            </Link>
-            <div className={classes.search}>
+              </Link>
+              <div className={classes.search}>
               <div className={clsx(classes.searchIcon, classes.btnHover)}>
                 <SearchIcon />
               </div>
@@ -132,9 +131,5 @@ function AppAppBar(props) {
     </div>
   );
 }
-
-AppAppBar.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(AppAppBar);
