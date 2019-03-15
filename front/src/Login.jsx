@@ -14,7 +14,7 @@ import RFTextField from './form/RFTextField.jsx';
 import FormButton from './form/FormButton.jsx';
 import FormFeedback from './form/FormFeedback.jsx';
 import compose from './utils/compose.jsx';
-import AuthService from './components/auth/auth-service.jsx';
+import AuthService from './components/services/auth-service.jsx';
 
 const styles = theme => ({
   form: {

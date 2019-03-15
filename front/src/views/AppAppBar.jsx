@@ -10,7 +10,7 @@ const spacing = 3;
 
 const styles = theme => ({
   title: {
-    fontSize: 24,
+    fontSize: 24
   },
   placeholder: toolbarStyles(theme).root,
   toolbar: {
@@ -55,6 +55,15 @@ function AppAppBar(props) {
             {'T & S - Things e Services'}
           </Link>
           <div className={classes.right}>
+            <Link
+              color="inherit"
+              variant="h6"
+              underline="none"
+              className={classes.rightLink}
+              href="/products"
+            >
+              {'Lista de Produtos'}
+            </Link>
             <Link
               color="inherit"
               variant="h6"

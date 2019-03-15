@@ -4,7 +4,11 @@ import { withStyles } from '@material-ui/core/styles';
 import withRoot from '../withRoot.jsx';
 import { Switch, Route } from 'react-router-dom';
 import Login from '../Login.jsx'
+import Settings from './Settings.jsx'
 import Home from '../components/layout/Home.jsx';
+import ProductList from '../components/products/ProductList.jsx';
+import ProductDetails from '../components/products/ProductDetail.jsx';
+import EditProduct from '../components/products/EditProduct.jsx';
 
 const styles = theme => ({
   root: {
@@ -36,7 +40,10 @@ class Index extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} /> 
           <Route exact path="/login" render={() => <Login />} />
-        </Switch>
+          <Route exact path="/products" render={() => <ProductList />} />
+          <Route path="/products/detail/:id" component={ProductDetails} /> 
+          <Route path="/products/edit/:id" component={EditProduct} /> 
+        </Switch>/
       </React.Fragment>
     );
   }

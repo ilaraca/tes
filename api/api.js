@@ -80,6 +80,7 @@ app.use('/', index);
 
 app.use('/auth', require('./routes/auth'));
 
-app.use('/settings', require('./routes/settings'));
+app.use('/products', require('./routes/product'));
+
 
 module.exports = app;
