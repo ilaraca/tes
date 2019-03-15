@@ -43,7 +43,7 @@ class Home extends React.Component {
     return (
       <div>
         <React.Fragment>
-          <AppAppBar userInSession={this.state.loggedInUser} getUser={this.getTheUser}/>
+          <AppAppBar userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
           <ProductHero />
           <ProductHowItWorks />
           <AppFooter />

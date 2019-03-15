@@ -5,17 +5,17 @@ import { Field, Form, FormSpy } from 'react-final-form';
 import grey from '@material-ui/core/colors/grey';
 import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
-import withRoot from './withRoot.jsx';
-import Typography from './components/Typography.jsx';
-import AppFooter from './views/AppFooter.jsx';
-import AppAppBar from './views/AppAppBar.jsx';
-import AppForm from './views/AppForm.jsx';
+import withRoot from '../../withRoot.jsx';
+import Typography from '../Typography.jsx';
+import AppFooter from '../../views/AppFooter.jsx';
+import AppAppBar from '../../views/AppAppBar.jsx';
+import AppForm from '../../views/AppForm.jsx';
 // import { email, required } from './form/validation';
-import RFTextField from './form/RFTextField.jsx';
-import FormButton from './form/FormButton.jsx';
-import FormFeedback from './form/FormFeedback.jsx';
-import compose from './utils/compose.jsx';
-import AuthService from './components/services/auth-service.jsx';
+import RFTextField from '../../form/RFTextField.jsx';
+import FormButton from '../../form/FormButton.jsx';
+import FormFeedback from '../../form/FormFeedback.jsx';
+import compose from '../../utils/compose.jsx';
+import AuthService from '../services/auth-service.jsx';
 
 const styles = theme => ({
   form: {
@@ -93,7 +93,7 @@ class Login extends React.Component {
                   component={RFTextField}
                   disabled={submitting || sent}
                   fullWidth
-                  label="Email"
+                  label="username"
                   margin="normal"
                   name="username"
                   required

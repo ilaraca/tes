@@ -2,6 +2,8 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
+import AppAppBar from '../../views/AppAppBar.jsx';
+import AppFooter from '../../views/AppFooter.jsx';
 
 class AddProduct extends Component {
   constructor(props) {
@@ -29,20 +31,41 @@ class AddProduct extends Component {
   }
 
   render() {
+    const styleDiv = {
+      width: '30rem'
+    }
+    const gridDiv = {
+      // padding: '10%'
+    }
+    const gridDivRow = {
+      backgroundColor: '#dcdcdc',
+      padding: '70px'
+    }
     return (
-      <div>
-        <h1>Cadastro de Produto</h1>
+      <div className="container-fluid">
+      <React.Fragment>
+      <AppAppBar />
+	     <div className="row" style={gridDivRow}>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Name:</label>
-          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)} />
-          <label>Description:</label>
-          <input name="decription" value={this.state.decription} onChange={e => this.handleChange(e)} />
-          <label>Url da Imagem:</label>
-          <input name="imgPath" value={this.state.imgPath} onChange={e => this.handleChange(e)} />
-
-          <input type="submit" value="Submit" />
+        <h1>Cadastro de Produto</h1>
+        <div class="form-group">
+          {/* <label>Nome:</label> */}
+          <input type="text" name="name" value={this.state.name} placeholder="Nome" onChange={e => this.handleChange(e)} />        
+        </div>
+        <div class="form-group">
+          {/* <label>Descrição:</label> */}
+          <input name="decription" value={this.state.decription} placeholder="Descrição do Produto" onChange={e => this.handleChange(e)} />
+        </div>
+        <div class="form-group"></div>
+          {/* <label>Url da Imagem:</label> */}
+          <input name="imgPath" value={this.state.imgPath} placeholder="URL da imagem" onChange={e => this.handleChange(e)} /><hr></hr>
+        
           <a href="/products" className="btn btn-primary">Voltar</a>
+          <input type="submit" className="btn btn-secondary" value="Salvar" />
         </form>
+      </div>
+      <AppFooter />
+      </React.Fragment>
       </div>
     );
   }

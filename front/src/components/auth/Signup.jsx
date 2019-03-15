@@ -1,55 +1,77 @@
-import withRoot from './withRoot.jsx';;
+
 // --- Post bootstrap -----
 import React from 'react';
 import PropTypes from 'prop-types';
-import compose from './utils/compose.jsx';
 import { Grid, Link } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { Field, Form, FormSpy } from 'react-final-form';
-import Typography from './components/Typography.jsx';
-import AppFooter from './views/AppFooter.jsx';
-import AppAppBar from './views/AppAppBar.jsx';
-import AppForm from './views/AppForm.jsx';
-//import { email, required } from './modules/form/validation';
-import RFTextField from './form/RFTextField.jsx';
-import FormButton from './form/FormButton.jsx';
-import FormFeedback from './form/FormFeedback.jsx';
+import compose from '../../utils/compose.jsx';
+import withRoot from '../../withRoot.jsx';
+import Typography from '../Typography.jsx';
+import AppFooter from '../../views/AppFooter.jsx';
+import AppAppBar from '../../views/AppAppBar.jsx';
+import AppForm from '../../views/AppForm.jsx';
+// import { email, required } from './modules/form/validation';
+import RFTextField from '../../form/RFTextField.jsx';
+import FormButton from '../../form/FormButton.jsx';
+import FormFeedback from '../../form/FormFeedback.jsx';
+import AuthService from '../services/auth-service.jsx';
 
 const styles = theme => ({
   form: {
-    marginTop: theme.spacing.unit * 6,
+    marginTop: theme.spacing.unit * 6
   },
   button: {
     marginTop: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
   },
   feedback: {
-    marginTop: theme.spacing.unit * 2,
-  },
+    marginTop: theme.spacing.unit * 2
+  }
 });
 
 class SignUp extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            sent: false,
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+      email: '',
+      sent: false
     };
+    this.service = new AuthService();
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-  validate = values => {
-    const errors = required(['firstName', 'lastName', 'email', 'password'], values, this.props);
+  // validate = values => {
+  //   const errors = required(['firstName', 'lastName', 'email', 'password'], values, this.props);
 
-    if (!errors.email) {
-      const emailError = email(values.email, values, this.props);
-      if (emailError) {
-        errors.email = email(values.email, values, this.props);
-      }
-    }
+  //   if (!errors.email) {
+  //     const emailError = email(values.email, values, this.props);
+  //     if (emailError) {
+  //       errors.email = email(values.email, values, this.props);
+  //     }
+  //   }
 
-    return errors;
-  };
+  //   return errors;
+  // };
 
-  handleSubmit = () => {};
+  handleSubmit(event) {
+    const username = this.event.username;
+    const password = this.event.password;
+    const email = this.event.email;
+
+    this.service.signup(username, password, email)
+      .then((response) => {
+        this.setState({
+          username: '',
+          password: '',
+          email: ''
+        });
+        this.props.getUser(response);
+      })
+      .catch(error => console.log(error));
+  }
 
   render() {
     const { classes } = this.props;
@@ -64,8 +86,8 @@ class SignUp extends React.Component {
               Sign Up
             </Typography>
             <Typography variant="body2" align="center">
-              <Link href="/premium-themes/onepirate/sign-in" underline="always">
-                Already have an account?
+              <Link href="/login" underline="always">
+                Já tem uma conta?
               </Link>
             </Typography>
           </React.Fragment>
@@ -76,29 +98,15 @@ class SignUp extends React.Component {
           >
             {({ handleSubmit, submitting }) => (
               <form onSubmit={handleSubmit} className={classes.form} noValidate>
-                <Grid container spacing={16}>
-                  <Grid item xs={12} sm={6}>
-                    <Field
-                      autoFocus
-                      component={RFTextField}
-                      autoComplete="fname"
-                      fullWidth
-                      label="First name"
-                      name="firstName"
-                      required
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <Field
-                      component={RFTextField}
-                      autoComplete="lname"
-                      fullWidth
-                      label="Last name"
-                      name="lastName"
-                      required
-                    />
-                  </Grid>
-                </Grid>
+                <Field
+                  autoFocus
+                  component={RFTextField}
+                  autoComplete="fname"
+                  fullWidth
+                  label="Nome Completo"
+                  name="username"
+                  required
+                />
                 <Field
                   autoComplete="email"
                   component={RFTextField}
@@ -116,17 +124,16 @@ class SignUp extends React.Component {
                   required
                   name="password"
                   autoComplete="current-password"
-                  label="Password"
+                  label="Senha"
                   type="password"
                   margin="normal"
                 />
                 <FormSpy subscription={{ submitError: true }}>
-                  {({ submitError }) =>
-                    submitError ? (
-                      <FormFeedback className={classes.feedback} error>
+                  {({ submitError }) => (submitError ? (
+                    <FormFeedback className={classes.feedback} error>
                         {submitError}
                       </FormFeedback>
-                    ) : null
+                  ) : null)
                   }
                 </FormSpy>
                 <FormButton
@@ -148,7 +155,7 @@ class SignUp extends React.Component {
 }
 
 SignUp.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default compose(

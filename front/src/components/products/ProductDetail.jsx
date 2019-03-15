@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import EditProduct from './EditProduct.jsx';
+import AppAppBar from '../../views/AppAppBar.jsx';
+import AppFooter from '../../views/AppFooter.jsx';
 
 class ProductDetails extends Component {
   constructor(props) {
@@ -15,7 +17,7 @@ class ProductDetails extends Component {
 
   getSingleProduct = () => {
     const { params } = this.props.match;
-    axios.get(`http://localhost:5000/products/detail/${params.id}`)
+    axios.get(`http://localhost:5000/products/detail/${params.id}`, {withCredentials:true})
       .then((responseFromApi) => {
         const theProduct = responseFromApi.data;
         this.setState(theProduct);
@@ -40,7 +42,7 @@ class ProductDetails extends Component {
   // DELETE Product:
   deleteProduct = () => {
     const { params } = this.props.match;
-    axios.delete(`http://localhost:5000/products/delete/${params.id}`)
+    axios.delete(`http://localhost:5000/products/delete/${params.id}`, {withCredentials:true})
     .then( () =>{
         this.props.history.push('/products'); // !!!
     })
@@ -65,7 +67,7 @@ class ProductDetails extends Component {
       width: '30rem'
     }
     const gridDiv = {
-      padding: '10%'
+      // padding: '10%'
     }
     const gridDivRow = {
       backgroundColor: '#dcdcdc',
@@ -78,6 +80,8 @@ class ProductDetails extends Component {
     }
     return (
       <div className="container-fluid" style={gridDiv}>
+      <React.Fragment>
+      <AppAppBar />
 	<div className="row" style={gridDivRow}>
   <div>
   </div>
@@ -89,10 +93,7 @@ class ProductDetails extends Component {
           <h5 className="card-title">{this.state.name}</h5>
           <p className="card-text">{this.state.decription}</p>
           <a href="/products" className="btn btn-primary">Voltar</a>
-          {/* <Link to={`/products/edit/${this.state._id}`}> */}
-            {/* <button type="button" className="btn btn-secondary" onClick={() => this.renderEditForm()}>Editar</button> */}
             <div>{this.renderEditForm()}</div>
-          {/* </Link> */}
           <button type="button" onClick={() => this.deleteProduct(this.state._id)} className="btn btn-danger">Excluir</button>
         </div>
      </div>
@@ -101,6 +102,8 @@ class ProductDetails extends Component {
         </div>
         </div>
       </div>
+      <AppFooter />
+      </React.Fragment>
       </div>
     );
   }

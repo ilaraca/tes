@@ -21,7 +21,7 @@ class EditProduct extends Component {
 
     event.preventDefault();
 
-    axios.put(`http://localhost:5000/products/edit/${this.props.theProduct._id}`, { name, decription, imgPath })
+    axios.put(`http://localhost:5000/products/edit/${this.props.theProduct._id}`, { name, decription, imgPath }, {withCredentials:true})
     // axios.put(`http://localhost:5000/products/edit/${params.id}`, { name, decription, imgPath })
     .then( () => {
         this.props.getTheProducts();

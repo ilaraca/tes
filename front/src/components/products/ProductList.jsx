@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import AppAppBar from '../../views/AppAppBar.jsx';
+import AppFooter from '../../views/AppFooter.jsx';
 
 class ProductList extends Component {
   constructor(){
@@ -14,7 +16,7 @@ class ProductList extends Component {
   }
 
   getAllProducts = () => {
-    axios.get(`http://localhost:5000/products/all`)
+    axios.get(`http://localhost:5000/products/all`, {withCredentials:true})
     .then(responseFromApi => {
       this.setState({
         listOfProducts: responseFromApi.data
@@ -35,7 +37,7 @@ class ProductList extends Component {
       width: '18rem'
     }
     const gridDiv = {
-      padding: '10%'
+      // padding: '5%'
     }
     const gridDivRow = {
       backgroundColor: '#dcdcdc',
@@ -52,13 +54,15 @@ class ProductList extends Component {
     return(
 
 <div className="container-fluid" style={gridDiv}>
+      <React.Fragment>
+      <AppAppBar />
 	<div className="row" style={gridDivRow}>
     <div>
       <h1> Lista de Produtos</h1>
+      <input type="text" value={this.state.search} onChange={this.updateSearch.bind(this)} />
       <Link to={`/`} >
         <h3>Voltar para Home</h3>
       </Link>
-      <input type="text" value={this.state.search} onChange={this.updateSearch.bind(this)} />
     </div>
 		<div className="col-md-12">
 		<div className="row">
@@ -83,6 +87,8 @@ class ProductList extends Component {
         </Link>
           </div>
       </div>
+      <AppFooter />
+      </React.Fragment>
       </div>
     )
   }
