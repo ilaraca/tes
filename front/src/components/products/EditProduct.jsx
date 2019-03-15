@@ -21,8 +21,8 @@ class EditProduct extends Component {
 
     event.preventDefault();
 
-    // axios.put(`http://localhost:5000/products/edit/${this.props.theProduct._id}`, { name, decription, imgPath })
-    axios.put(`http://localhost:5000/products/edit/${params.id}`, { name, decription, imgPath })
+    axios.put(`http://localhost:5000/products/edit/${this.props.theProduct._id}`, { name, decription, imgPath })
+    // axios.put(`http://localhost:5000/products/edit/${params.id}`, { name, decription, imgPath })
     .then( () => {
         this.props.getTheProducts();
         // after submitting the form, redirect to '/products'
@@ -37,21 +37,18 @@ class EditProduct extends Component {
   }
 
   render(){
+    console.log('edit', this.state)
     return (
       <div>
-        <hr />
-        <h3>Editar o Produto</h3>
+        <h5>Editar o Produto</h5>
         <form onSubmit={this.handleFormSubmit}>
+          <input className="form-control form-control-sm" type="text" name="imgPath" value={this.state.imgPath} placeholder="URL da Imagem" onChange={e => this.handleChange(e)}/>
           
-          <input type="text" name="imgPath" value={this.state.imgPath} onChange={e => this.handleChange(e)}/>
+          <input className="form-control form-control-sm" type="text" name="name" value={this.state.name} placeholder="Nome" onChange={e => this.handleChange(e)}/>
           
-          <label>Name:</label>
-          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)}/>
-          
-          <label>Description:</label>
-          <textarea name="description" value={this.state.decription} onChange={e => this.handleChange(e)} />
+          <input className="form-control form-control-sm" name="description" value={this.state.decription} placeholder="Descrição" onChange={e => this.handleChange(e)} />
 
-          <input type="submit" value="Submit" />
+          <input  className="btn btn-secondary" type="submit" value="Salvar" />
 
         </form>
       </div>

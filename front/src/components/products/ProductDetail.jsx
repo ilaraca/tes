@@ -40,9 +40,9 @@ class ProductDetails extends Component {
   // DELETE Product:
   deleteProduct = () => {
     const { params } = this.props.match;
-    axios.delete(`http://localhost:8080/products/detail/${params.id}`)
+    axios.delete(`http://localhost:5000/products/delete/${params.id}`)
     .then( () =>{
-        this.props.history.push('/projects'); // !!!
+        this.props.history.push('/products'); // !!!
     })
     .catch((err)=>{
         console.log(err)
@@ -61,9 +61,8 @@ class ProductDetails extends Component {
   }
 
   render() {
-    console.log('kkkkkk', this.state);
     const styleDiv = {
-      width: '18rem'
+      width: '30rem'
     }
     const gridDiv = {
       padding: '10%'
@@ -89,14 +88,11 @@ class ProductDetails extends Component {
        <div className="card-body">
           <h5 className="card-title">{this.state.name}</h5>
           <p className="card-text">{this.state.decription}</p>
-          {/* <div>
-            {this.ownershipCheck(this.state)}
-          </div> */}
           <a href="/products" className="btn btn-primary">Voltar</a>
-          <Link to={`/products/edit/${this.state._id}`}>
-            <button type="button" className="btn btn-secondary">Editar</button>
-          </Link>
-          {/* <a href="/products/edit" className="btn btn-secondary">Editar</a> */}
+          {/* <Link to={`/products/edit/${this.state._id}`}> */}
+            {/* <button type="button" className="btn btn-secondary" onClick={() => this.renderEditForm()}>Editar</button> */}
+            <div>{this.renderEditForm()}</div>
+          {/* </Link> */}
           <button type="button" onClick={() => this.deleteProduct(this.state._id)} className="btn btn-danger">Excluir</button>
         </div>
      </div>
