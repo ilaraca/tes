@@ -54,7 +54,7 @@ function AppFooter(props) {
   return (
     <Typography component="footer" className={classes.root}>
       <LayoutBody className={classes.layoutBody} width="large">
-        <Grid item xs={6}>Criado por Ilara Almeida e Cristiana Yasuda © 2019 </Grid>
+        <Grid item xs={12}>Criado por Ilara Almeida e Cristiana Yasuda © 2019 </Grid>
       </LayoutBody>
     </Typography>
   );

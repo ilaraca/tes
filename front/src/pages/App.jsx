@@ -14,6 +14,7 @@ import Signup from '../components/auth/Signup.jsx';
 import AuthService from '../components/services/auth-service.jsx';
 import ProtectedRoute from '../components/auth/protected-route.jsx';
 
+
 const styles = theme => ({
   root: {
     textAlign: 'center',
@@ -25,21 +26,22 @@ class App extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      loogedInUser: null,
+      loggedInUser: null,
       open: false,
     };
+    this.service = new AuthService();
   }
 
-
   fetchUser(){
-    if( this.state.loggedInUser === null ){
+    if (this.state.loggedInUser === null ){
       this.service.loggedin()
       .then(response =>{
+        console.log(response)
         this.setState({
           loggedInUser:  response
         }) 
       })
-      .catch( err =>{
+      .catch(err =>{
         this.setState({
           loggedInUser:  false
         }) 
@@ -47,7 +49,8 @@ class App extends React.Component {
     }
   }
 
-  getTheUser = (userObj) => {
+  getTheUser(userObj) {
+    console.log('logged User: ', userObj);
     this.setState({
       loggedInUser: userObj
     })
@@ -67,9 +70,10 @@ class App extends React.Component {
 
   render() {
     this.fetchUser()
-    if (this.state.loogedInUser){
+    if (this.state.loggedInUser){
       return (
         <React.Fragment>
+        {console.log('loggedin', this.state.loggedInUser)}
           <Switch>
             <Route exact path="/" component={Home} /> 
             <ProtectedRoute user={this.state.loggedInUser}  exact path="/products" component={ProductList} />
@@ -84,18 +88,14 @@ class App extends React.Component {
         <React.Fragment>
           <Switch>
             <Route exact path="/" component={Home} />
-            
             {/* tirar daqui quando o fetchUser estiver funcionando */}
-            <Route exact path="/products" component={ProductList} />
+            {/* <Route exact path="/products" component={ProductList} />
             <Route path="/products/add" component={AddProduct} /> 
             <Route path="/products/detail/:id" component={ProductDetails} /> 
-            <Route path="/products/edit/:id" component={EditProduct} /> 
-
-
-
-
-            <Route exact path="/login" render={() => <Login />} />
-            <Route exact path="/signup" render={() => <Signup />} />
+            <Route path="/products/edit/:id" component={EditProduct} />  */}
+            {/*  */}
+            <Route exact path="/login" render={() => <Login getUser={this.getTheUser} />} />
+            <Route exact path="/signup" render={() => <Signup getUser={this.getTheUser} />} />
           </Switch>
         </React.Fragment>
       )

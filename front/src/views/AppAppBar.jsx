@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-=======
-import React from 'react';
->>>>>>> 815ac5fec76119421d4de9115a9b937a395b0539
 import clsx from 'clsx';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
@@ -89,12 +85,25 @@ const styles = theme => ({
 class AppAppBar extends Component {
   constructor(props){
     super(props);
-    this.state = { loggedInUser: null }
+    this.state = { loggedInUser: this.props.userInSession }
     this.service = new AuthService();
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({...this.state, loggedInUser: nextProps["userInSession"]});
+  fetchUser() {
+    if (this.state.loggedInUser === null) {
+      this.service.loggedin()
+        .then((response) => {
+          this.setState({
+            loggedInUser: response
+          });
+        })
+        .catch((_err) => {
+          console.log(_err);
+          this.setState({
+            loggedInUser: false
+          });
+        });
+    }
   }
 
   logoutUser = () => {
@@ -105,8 +114,13 @@ class AppAppBar extends Component {
     })
   }
 
+  componentDidMount() {
+    this.fetchUser();
+  }
+
   render(){
-    const { classes } = this.props;    
+    const { classes } = this.props;
+    console.log('loggedInUserAppBar', this.state.loggedInUser);
     if(this.state.loggedInUser) {
       return (
         <div>
@@ -134,7 +148,7 @@ class AppAppBar extends Component {
                   />
                 </div>
               <div className={classes.right}>
-               <h1>Olá, {this.state.loggedInUser.username}</h1>
+               <p>Olá, {this.state.loggedInUser.username}</p>
                 <Link
                   color="inherit"
                   variant="h6"
@@ -149,16 +163,9 @@ class AppAppBar extends Component {
                   variant="h6"
                   underline="none"
                   className={classes.rightLink}
-                  href="/login"
+                  href="/"
                 >
-                  {'Entre'}
-                </Link>
-                <Link
-                  variant="h6"
-                  className={clsx(classes.rightLink, classes.linkSecondary, classes.btnHover)}
-                  href="/signup"
-                >
-                  {'Cadastre-se'}
+                  <a onClick={() => this.logoutUser()}>Sair</a>
                 </Link>
               </div>
             </Toolbar>
@@ -193,16 +200,6 @@ class AppAppBar extends Component {
                   />
                 </div>
               <div className={classes.right}>
-              {/* <h1>Olá, Ilara</h1> */}
-              <Link
-                  color="inherit"
-                  variant="h6"
-                  underline="none"
-                  className={classes.rightLink}
-                  href="/products"
-                >
-                  {'Lista de Produtos'}
-                </Link>
                 <Link
                   color="inherit"
                   variant="h6"

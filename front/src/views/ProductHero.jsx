@@ -43,7 +43,7 @@ function ProductHero(props) {
         Pense sem dinheiro, pense colaborativo
       </Typography>
       <Typography color="inherit" align="center" variant="h5" className={classes.h5}>
-        Não gaste seu dinheiro, troque seus produtos e/ou serviços
+        Não gaste seu dinheiro, troque seus produtos por outros
       </Typography>
       <Button
         color="secondary"

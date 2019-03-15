@@ -43,19 +43,6 @@ class SignUp extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // validate = values => {
-  //   const errors = required(['firstName', 'lastName', 'email', 'password'], values, this.props);
-
-  //   if (!errors.email) {
-  //     const emailError = email(values.email, values, this.props);
-  //     if (emailError) {
-  //       errors.email = email(values.email, values, this.props);
-  //     }
-  //   }
-
-  //   return errors;
-  // };
-
   handleSubmit(event) {
     const username = this.event.username;
     const password = this.event.password;

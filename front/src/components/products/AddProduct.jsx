@@ -34,9 +34,6 @@ class AddProduct extends Component {
     const styleDiv = {
       width: '30rem'
     }
-    const gridDiv = {
-      // padding: '10%'
-    }
     const gridDivRow = {
       backgroundColor: '#dcdcdc',
       padding: '70px'
@@ -49,19 +46,16 @@ class AddProduct extends Component {
         <form onSubmit={this.handleFormSubmit}>
         <h1>Cadastro de Produto</h1>
         <div class="form-group">
-          {/* <label>Nome:</label> */}
           <input type="text" name="name" value={this.state.name} placeholder="Nome" onChange={e => this.handleChange(e)} />        
         </div>
         <div class="form-group">
-          {/* <label>Descrição:</label> */}
           <input name="decription" value={this.state.decription} placeholder="Descrição do Produto" onChange={e => this.handleChange(e)} />
         </div>
         <div class="form-group"></div>
-          {/* <label>Url da Imagem:</label> */}
           <input name="imgPath" value={this.state.imgPath} placeholder="URL da imagem" onChange={e => this.handleChange(e)} /><hr></hr>
         
           <a href="/products" className="btn btn-primary">Voltar</a>
-          <input type="submit" className="btn btn-secondary" value="Salvar" />
+          <input type="submit" className="btn btn-secondary" value="Salvar" href="/products"/>
         </form>
       </div>
       <AppFooter />

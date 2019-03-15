@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Field, Form, FormSpy } from 'react-final-form';
 import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
+import { Redirect } from 'react-router-dom';
 import withRoot from '../../withRoot.jsx';
 import Typography from '../Typography.jsx';
 import AppFooter from '../../views/AppFooter.jsx';
@@ -32,29 +33,17 @@ const styles = theme => ({
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { username: '', password: '' };
+    this.state = { username: '', password: '', redirect: '' };
     this.service = new AuthService();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  // validate = values => {
-  //   const errors = required(['email', 'password'], values, this.props);
-
-  //   if (!errors.email) {
-  //     const emailError = email(values.email, values, this.props);
-  //     if (emailError) {
-  //       errors.email = email(values.email, values, this.props);
-  //     }
-  //   }
-
-  // return errors;
-  // };
 
   handleSubmit(event) {
     const username = event.username;
     const password = event.password;
     this.service.login(username, password)
       .then((response) => {
-        this.setState({ username, password });
+        this.setState({ username, password, redirect: <Redirect to="/" /> });
         this.props.getUser(response);
       })
       .catch(error => console.log(error));
@@ -66,6 +55,7 @@ class Login extends React.Component {
 
     return (
       <React.Fragment>
+        {this.state.redirect}
         <AppAppBar />
         <AppForm>
           <React.Fragment>

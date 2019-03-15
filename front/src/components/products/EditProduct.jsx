@@ -46,7 +46,7 @@ class EditProduct extends Component {
           
           <input className="form-control form-control-sm" type="text" name="name" value={this.state.name} placeholder="Nome" onChange={e => this.handleChange(e)}/>
           
-          <input className="form-control form-control-sm" name="description" value={this.state.decription} placeholder="Descrição" onChange={e => this.handleChange(e)} />
+          <input className="form-control form-control-sm" name="decription" value={this.state.decription} placeholder="Descrição" onChange={e => this.handleChange(e)} />
 
           <input  className="btn btn-secondary" type="submit" value="Salvar" />
 

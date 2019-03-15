@@ -60,7 +60,7 @@ function ProductHowItWorks(props) {
     <section className={classes.root}>
       <LayoutBody className={classes.layoutBody} width="large">
         <img
-          src="/static/themes/onepirate/productCurvyLines.png"
+          // src="/static/themes/onepirate/productCurvyLines.png"
           className={classes.curvyLines}
           alt="curvy lines"
         />
@@ -91,7 +91,7 @@ function ProductHowItWorks(props) {
                   className={classes.image}
                 />
                 <Typography variant="h5" align="center">
-                  Cadastre seus produtos, estimule a volta do escambo! 
+                  Cadastre seus produtos, estimule a volta do escambo!
                 </Typography>
               </div>
             </Grid>
@@ -110,16 +110,6 @@ function ProductHowItWorks(props) {
             </Grid>
           </Grid>
         </div>
-        <Button
-          size="large"
-          variant="contained"
-          className={classes.button}
-          component={linkProps => (
-            <Link {...linkProps} href="/signup" variant="button" />
-          )}
-        >
-          Get started
-        </Button>
       </LayoutBody>
     </section>
   );
