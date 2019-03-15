@@ -1,65 +1,55 @@
+import withRoot from './withRoot.jsx';;
 // --- Post bootstrap -----
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, Form, FormSpy } from 'react-final-form';
-import grey from '@material-ui/core/colors/grey';
+import compose from './utils/compose.jsx';
+import { Grid, Link } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import Link from '@material-ui/core/Link';
-import withRoot from './withRoot.jsx';
+import { Field, Form, FormSpy } from 'react-final-form';
 import Typography from './components/Typography.jsx';
 import AppFooter from './views/AppFooter.jsx';
 import AppAppBar from './views/AppAppBar.jsx';
 import AppForm from './views/AppForm.jsx';
-// import { email, required } from './form/validation';
+//import { email, required } from './modules/form/validation';
 import RFTextField from './form/RFTextField.jsx';
 import FormButton from './form/FormButton.jsx';
 import FormFeedback from './form/FormFeedback.jsx';
-import compose from './utils/compose.jsx';
-import AuthService from './components/services/auth-service.jsx';
 
 const styles = theme => ({
   form: {
-    marginTop: theme.spacing.unit * 6
+    marginTop: theme.spacing.unit * 6,
   },
   button: {
     marginTop: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing.unit * 2,
   },
   feedback: {
-    marginTop: theme.spacing.unit * 2
-  }
+    marginTop: theme.spacing.unit * 2,
+  },
 });
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { username: '', password: '' };
-    this.service = new AuthService();
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  // validate = values => {
-  //   const errors = required(['email', 'password'], values, this.props);
+class SignUp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            sent: false,
+        }
+    };
 
-  //   if (!errors.email) {
-  //     const emailError = email(values.email, values, this.props);
-  //     if (emailError) {
-  //       errors.email = email(values.email, values, this.props);
-  //     }
-  //   }
+  validate = values => {
+    const errors = required(['firstName', 'lastName', 'email', 'password'], values, this.props);
 
-  // return errors;
-  // };
+    if (!errors.email) {
+      const emailError = email(values.email, values, this.props);
+      if (emailError) {
+        errors.email = email(values.email, values, this.props);
+      }
+    }
 
-  handleSubmit(event) {
-    const username = event.username;
-    const password = event.password;
-    this.service.login(username, password)
-      .then((response) => {
-        this.setState({ username, password });
-        this.props.getUser(response);
-      })
-      .catch(error => console.log(error));
-  }
+    return errors;
+  };
+
+  handleSubmit = () => {};
 
   render() {
     const { classes } = this.props;
@@ -71,12 +61,11 @@ class Login extends React.Component {
         <AppForm>
           <React.Fragment>
             <Typography variant="h3" gutterBottom marked="center" align="center">
-              Entre aqui
+              Sign Up
             </Typography>
             <Typography variant="body2" align="center">
-              {'Não é membro ainda? '}
-              <Link href="/signup" align="center" underline="always">
-                Cadastre-se aqui
+              <Link href="/premium-themes/onepirate/sign-in" underline="always">
+                Already have an account?
               </Link>
             </Typography>
           </React.Fragment>
@@ -87,55 +76,70 @@ class Login extends React.Component {
           >
             {({ handleSubmit, submitting }) => (
               <form onSubmit={handleSubmit} className={classes.form} noValidate>
+                <Grid container spacing={16}>
+                  <Grid item xs={12} sm={6}>
+                    <Field
+                      autoFocus
+                      component={RFTextField}
+                      autoComplete="fname"
+                      fullWidth
+                      label="First name"
+                      name="firstName"
+                      required
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Field
+                      component={RFTextField}
+                      autoComplete="lname"
+                      fullWidth
+                      label="Last name"
+                      name="lastName"
+                      required
+                    />
+                  </Grid>
+                </Grid>
                 <Field
                   autoComplete="email"
-                  autoFocus
                   component={RFTextField}
                   disabled={submitting || sent}
                   fullWidth
                   label="Email"
                   margin="normal"
-                  name="username"
+                  name="email"
                   required
-                  size="large"
                 />
                 <Field
                   fullWidth
-                  size="large"
                   component={RFTextField}
                   disabled={submitting || sent}
                   required
                   name="password"
                   autoComplete="current-password"
-                  label="Senha"
+                  label="Password"
                   type="password"
                   margin="normal"
                 />
                 <FormSpy subscription={{ submitError: true }}>
-                  {({ submitError }) => (submitError ? (
-                    <FormFeedback className={classes.feedback} error>
-                      {submitError}
-                    </FormFeedback>
-                  ) : null)
+                  {({ submitError }) =>
+                    submitError ? (
+                      <FormFeedback className={classes.feedback} error>
+                        {submitError}
+                      </FormFeedback>
+                    ) : null
                   }
                 </FormSpy>
                 <FormButton
                   className={classes.button}
                   disabled={submitting || sent}
-                  size="large"
-                  color="primary"
+                  color="secondary"
                   fullWidth
                 >
-                  {submitting || sent ? 'In progress…' : 'Entre'}
+                  {submitting || sent ? 'In progress…' : 'Sign Up'}
                 </FormButton>
               </form>
             )}
           </Form>
-          <Typography align="center">
-            <Link underline="always" href="/forgotpassword">
-              Esqueceu a senha?
-            </Link>
-          </Typography>
         </AppForm>
         <AppFooter />
       </React.Fragment>
@@ -143,11 +147,11 @@ class Login extends React.Component {
   }
 }
 
-Login.propTypes = {
-  classes: PropTypes.object.isRequired
+SignUp.propTypes = {
+  classes: PropTypes.object.isRequired,
 };
 
 export default compose(
   withRoot,
   withStyles(styles),
-)(Login);
+)(SignUp);

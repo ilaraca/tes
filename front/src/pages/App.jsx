@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import withRoot from '../withRoot.jsx';
 import { Switch, Route } from 'react-router-dom';
+<<<<<<< HEAD
 import Login from '../Login.jsx'
 import Settings from './Settings.jsx'
+=======
+import Login from '../Login.jsx';
+import Signup from '../Signup.jsx';
+>>>>>>> cc9fb0868a5324e4285210055ba26d67c737063a
 import Home from '../components/layout/Home.jsx';
 import ProductList from '../components/products/ProductList.jsx';
 import ProductDetails from '../components/products/ProductDetail.jsx';

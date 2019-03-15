@@ -33,7 +33,7 @@ const styles = theme => ({
   number: {
     fontSize: 24,
     fontFamily: theme.typography.fontFamily,
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.dark,
     fontWeight: theme.typography.fontWeightMedium
   },
   image: {
